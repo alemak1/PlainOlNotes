@@ -17,7 +17,7 @@ static NSString* currentKey = nil;
 +(NSMutableDictionary*) getAllNotes{
     
     if(allNotes == nil){
-        allNotes = [[NSMutableDictionary alloc] initWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:kAllNotes]];
+        allNotes = [[NSMutableDictionary alloc] initWithDictionary:[NSDictionary dictionaryWithContentsOfFile:[self filePath]];
     }
     
     return allNotes;
@@ -48,9 +48,14 @@ static NSString* currentKey = nil;
 }
 
 +(void) saveNotes{
-    [[NSUserDefaults standardUserDefaults] setObject:allNotes forKey:kAllNotes];
+    [allNotes writeToFile:[self filePath] atomically:YES];
 }
 
 
++(NSString*) filePath{
+    NSArray* directories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString* documents = [directories objectAtIndex:0];
+    return [documents stringByAppendingPathComponent:kAllNotes];
+}
 
 @end
