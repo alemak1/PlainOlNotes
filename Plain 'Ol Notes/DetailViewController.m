@@ -7,6 +7,7 @@
 //
 
 #import "DetailViewController.h"
+#import "Data.h"
 
 @interface DetailViewController ()
 
@@ -16,9 +17,14 @@
 
 - (void)configureView {
     // Update the user interface for the detail item.
-    if (self.detailItem) {
-        self.tView.text = [self.detailItem description];
+    NSString* currentNote = [[Data getAllNotes] objectForKey:[Data getCurrentKey]];
+    if(![currentNote isEqualToString:kDefaultText]){
+        self.tView.text = currentNote;
+    } else {
+        self.tView.text = @"";
     }
+    
+    [self.tView becomeFirstResponder];
 }
 
 
@@ -40,6 +46,7 @@
 - (void)setDetailItem:(NSDate *)newDetailItem {
     if (_detailItem != newDetailItem) {
         _detailItem = newDetailItem;
+        [Data setCurrentKey:_detailItem];
         
         // Update the view.
         [self configureView];
