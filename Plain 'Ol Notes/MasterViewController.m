@@ -19,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self makeObjects];
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
@@ -31,8 +32,16 @@
 - (void)viewWillAppear:(BOOL)animated {
     self.clearsSelectionOnViewWillAppear = self.splitViewController.isCollapsed;
     [super viewWillAppear:animated];
+    [self makeObjects];
+    [self.tableView reloadData];
 }
 
+- (void) makeObjects{
+    _objects = [NSMutableArray arrayWithArray:[[Data getAllNotes] allKeys]];
+    [_objects sortUsingComparator:^NSComparisonResult(NSDate* obj1, NSDate* obj2) {
+        return [obj2 compare:obj1];
+    }];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -41,9 +50,7 @@
 
 
 - (void)insertNewObject:(id)sender {
-    if (!self.objects) {
-        self.objects = [[NSMutableArray alloc] init];
-    }
+   
     NSString* key = [[NSDate date] description];
     [Data setNote:kDefaultText forKey:key];
     [Data setCurrentKey:key];
@@ -52,6 +59,7 @@
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self performSegueWithIdentifier:kDetailView sender:self];
 }
 
 
@@ -84,8 +92,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = self.objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    NSString *object = self.objects[indexPath.row];
+    cell.textLabel.text = [[Data getAllNotes] objectForKey:object];
     return cell;
 }
 
