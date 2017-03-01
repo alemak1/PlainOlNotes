@@ -11,32 +11,39 @@
 
 @implementation Data
 
+static NSMutableDictionary* allNotes = nil;
+static NSString* currentKey = nil;
 
 +(NSMutableDictionary*) getAllNotes{
     
+    if(allNotes == nil){
+        allNotes = [[NSMutableDictionary alloc] init];
+    }
     
+    return allNotes;
 }
 
 +(void) setCurrentKey:(NSString*)key{
-    
+    currentKey = key;
 }
 
 +(NSString*) getCurrentKey{
    
-    
+    return currentKey;
 }
 
 +(void) setNoteForCurrentKey: (NSString*)note{
-    
+    [self setNote:note forKey:currentKey];
 }
 
 +(void) setNote:(NSString*)note forKey:(NSString*)key{
     
-    
+    [allNotes setObject:note forKey:key];
+
 }
 
 +(void) removeNoteForKey:(NSString*)key{
-    
+    [allNotes removeObjectForKey:key];
     
 }
 
