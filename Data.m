@@ -12,5 +12,33 @@
 @implementation Data
 
 
++(NSMutableDictionary*) getAllNotes{
+    
+    
+}
+
++(void) setCurrentKey:(NSString*)key{
+    
+}
+
++(NSString*) getCurrentKey{
+   
+    
+}
+
++(void) setNoteForCurrentKey: (NSString*)note{
+    
+}
+
++(void) setNote:(NSString*)note forKey:(NSString*)key{
+    
+    
+}
+
++(void) removeNoteForKey:(NSString*)key{
+    
+    
+}
+
 
 @end
