@@ -17,7 +17,7 @@ static NSString* currentKey = nil;
 +(NSMutableDictionary*) getAllNotes{
     
     if(allNotes == nil){
-        allNotes = [[NSMutableDictionary alloc] init];
+        allNotes = [[NSMutableDictionary alloc] initWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:kAllNotes]];
     }
     
     return allNotes;
