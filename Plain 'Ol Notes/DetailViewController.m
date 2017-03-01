@@ -41,6 +41,15 @@
 }
 
 
+-(void) viewWillDisappear:(BOOL)animated{
+    if(![self.tView.text isEqualToString:@""]){
+        [Data setNoteForCurrentKey:self.tView.text];
+    } else {
+        [Data removeNoteForKey:[Data getCurrentKey]];
+    }
+    
+    [Data saveNotes];
+}
 #pragma mark - Managing the detail item
 
 - (void)setDetailItem:(NSDate *)newDetailItem {
