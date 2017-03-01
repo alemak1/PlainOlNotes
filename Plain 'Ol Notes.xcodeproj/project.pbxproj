@@ -32,8 +32,8 @@
 		BD41734C1E667ED500C02501 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD41734E1E667ED500C02501 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD4173541E667FDB00C02501 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
-		BD4173561E66830600C02501 /* Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Data.m; sourceTree = "<group>"; };
-		BD4173581E66832200C02501 /* Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
+		BD4173561E66830600C02501 /* Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Data.m; path = ../Data.m; sourceTree = "<group>"; };
+		BD4173581E66832200C02501 /* Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Data.h; path = ../Data.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,8 +50,6 @@
 		BD41732E1E667ED500C02501 = {
 			isa = PBXGroup;
 			children = (
-				BD4173581E66832200C02501 /* Data.h */,
-				BD4173561E66830600C02501 /* Data.m */,
 				BD4173391E667ED500C02501 /* Plain 'Ol Notes */,
 				BD4173381E667ED500C02501 /* Products */,
 			);
@@ -68,6 +66,8 @@
 		BD4173391E667ED500C02501 /* Plain 'Ol Notes */ = {
 			isa = PBXGroup;
 			children = (
+				BD4173581E66832200C02501 /* Data.h */,
+				BD4173561E66830600C02501 /* Data.m */,
 				BD4173541E667FDB00C02501 /* assets */,
 				BD41733D1E667ED500C02501 /* AppDelegate.h */,
 				BD41733E1E667ED500C02501 /* AppDelegate.m */,
