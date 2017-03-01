@@ -47,5 +47,10 @@ static NSString* currentKey = nil;
     
 }
 
++(void) saveNotes{
+    [[NSUserDefaults standardUserDefaults] setObject:allNotes forKey:kAllNotes];
+}
+
+
 
 @end

@@ -22,5 +22,7 @@
 +(void) setNote:(NSString*)note forKey:(NSString*)key;
 +(void) removeNoteForKey:(NSString*)key;
 
++(void) saveNotes;
+
 @end
 
